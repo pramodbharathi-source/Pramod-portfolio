@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=TASA+Orbiter:wght@400;500;600;700;800&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F8FAFC;color:#192839;font-family:Inter,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#2950DA}a:hover{color:#1B3591}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(72,208,140,.5)}70%{box-shadow:0 0 0 9px rgba(72,208,140,0)}100%{box-shadow:0 0 0 0 rgba(72,208,140,0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
+</style>
+</helmet>
+<nav style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #E3EAF3">
+  <div style="max-width:1136px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between">
+    <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <div style="width:34px;height:34px;background:#305EFF;border-radius:8px;display:grid;place-items:center;color:#FFFFFF;font:700 14px 'TASA Orbiter',sans-serif;letter-spacing:.5px">PB</div>
+      <span style="font:600 15px 'TASA Orbiter',sans-serif;color:#192839">Pramod Bharathi</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:6px">
+      <a href="Home.dc.html" style="padding:8px 12px;border-radius:4px;font:600 14px Inter;color:#2950DA;background:rgba(48,94,255,.09);text-decoration:none">Home</a>
+      <a href="Work.dc.html" style="padding:8px 12px;border-radius:4px;font:500 14px Inter;color:#40566D;text-decoration:none;transition:background .15s cubic-bezier(.3,0,.2,1)" style-hover="background:rgba(108,132,157,.09);color:#192839">Work</a>
+      <a href="About.dc.html" style="padding:8px 12px;border-radius:4px;font:500 14px Inter;color:#40566D;text-decoration:none;transition:background .15s cubic-bezier(.3,0,.2,1)" style-hover="background:rgba(108,132,157,.09);color:#192839">About</a>
+      <a href="Contact.dc.html" style="padding:8px 12px;border-radius:4px;font:500 14px Inter;color:#40566D;text-decoration:none;transition:background .15s cubic-bezier(.3,0,.2,1)" style-hover="background:rgba(108,132,157,.09);color:#192839">Contact</a>
+      <a href="About.dc.html#resume" style="margin-left:10px;display:inline-flex;align-items:center;gap:8px;background:#305EFF;color:#FFFFFF;font:600 13.5px Inter;padding:9px 16px;border-radius:4px;text-decoration:none;transition:background .15s cubic-bezier(.3,0,.2,1)" style-hover="background:#2950DA;color:#FFFFFF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Resume</a>
+    </div>
+  </div>
+</nav>
+<header data-screen-label="Hero" style="background:#0D1A48;color:#FFFFFF;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(48,94,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(48,94,255,.07) 1px,transparent 1px);background-size:44px 44px;pointer-events:none"></div>
+  <div style="max-width:1136px;margin:0 auto;padding:84px 24px 76px;position:relative;display:grid;grid-template-columns:1fr 400px;gap:72px;align-items:center">
+    <div>
+      <sc-if value="{{ openToWork }}" hint-placeholder-val="{{ true }}">
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(0,190,95,.12);border:1px solid rgba(72,208,140,.35);color:#48D08C;font:500 13px Inter;padding:6px 14px;border-radius:9999px;animation:fadeUp .7s cubic-bezier(0,0,.2,1) both">
+          <span style="width:8px;height:8px;border-radius:50%;background:#48D08C;animation:pulseDot 2s cubic-bezier(.3,0,.2,1) infinite"></span>
+          Open to new opportunities</div>
+      </sc-if>
+      <h1 style="margin:20px 0 0;font:800 60px/66px 'TASA Orbiter',sans-serif;letter-spacing:-0.02em;animation:fadeUp .7s cubic-bezier(0,0,.2,1) .08s both">Hi, I'm <span style="color:#75A3FF">Pramod Bharathi</span>.<br>I build software that ships.</h1>
+      <p style="margin:22px 0 0;max-width:530px;font:400 18px/28px Inter;color:rgba(216,228,253,.78);animation:fadeUp .7s cubic-bezier(0,0,.2,1) .16s both">Software engineer with 6+ years of experience turning complex problems into fast, reliable products — currently building digital platforms at Altimetrik.</p>
+      <div style="display:flex;gap:12px;margin-top:34px;animation:fadeUp .7s cubic-bezier(0,0,.2,1) .24s both">
+        <a href="Work.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:#305EFF;color:#FFFFFF;font:600 15px Inter;padding:13px 22px;border-radius:4px;text-decoration:none;transition:all .15s cubic-bezier(.3,0,.2,1)" style-hover="background:#2950DA;color:#FFFFFF;transform:translateY(-1px)">View my work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.28);color:#FFFFFF;font:600 15px Inter;padding:13px 22px;border-radius:4px;text-decoration:none;transition:all .15s cubic-bezier(.3,0,.2,1)" style-hover="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5);color:#FFFFFF">Get in touch</a>
+      </div>
+      <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:56px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);animation:fadeUp .7s cubic-bezier(0,0,.2,1) .32s both">
+          <div><div style="font:700 34px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">{{ years }}+</div><div style="margin-top:4px;font:400 13px Inter;color:rgba(216,228,253,.6)">Years of experience</div></div>
+          <div><div style="font:700 34px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">{{ projects }}+</div><div style="margin-top:4px;font:400 13px Inter;color:rgba(216,228,253,.6)">Projects delivered</div></div>
+          <div><div style="font:700 34px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">{{ certs }}</div><div style="margin-top:4px;font:400 13px Inter;color:rgba(216,228,253,.6)">Certifications</div></div>
+        </div>
+      </sc-if>
+    </div>
+    <div style="position:relative;animation:fadeUp .8s cubic-bezier(0,0,.2,1) .2s both">
+      <div style="position:absolute;top:18px;left:18px;right:-18px;bottom:-18px;border:1.5px solid rgba(48,94,255,.55);border-radius:16px"></div>
+      <div style="position:relative;height:470px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.14)">
+        <image-slot id="portrait" shape="rounded" radius="16" placeholder="Drop your headshot here"></image-slot>
+      </div>
+      <div style="position:absolute;left:-30px;bottom:54px;display:flex;align-items:center;gap:11px;background:#FFFFFF;border-radius:8px;padding:12px 16px;box-shadow:0 8px 24px rgba(12,25,39,.28);animation:floaty 4s ease-in-out infinite alternate">
+        <div style="width:34px;height:34px;background:rgba(48,94,255,.09);border-radius:6px;display:grid;place-items:center">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2950DA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+        <div><div style="font:600 13px Inter;color:#192839">Full-stack engineer</div><div style="font:400 11.5px Inter;color:#6C849D;margin-top:1px">Web · Cloud · Data</div></div>
+      </div>
+      <div style="position:absolute;right:-22px;top:34px;display:flex;align-items:center;gap:11px;background:#FFFFFF;border-radius:8px;padding:12px 16px;box-shadow:0 8px 24px rgba(12,25,39,.28);animation:floaty 5s ease-in-out .9s infinite alternate">
+        <div style="width:34px;height:34px;background:rgba(0,162,81,.09);border-radius:6px;display:grid;place-items:center">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#00A251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+        <div><div style="font:600 13px Inter;color:#192839">Certified</div><div style="font:400 11.5px Inter;color:#6C849D;margin-top:1px">Cloud · Architecture</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+<section aria-label="Skills ticker" style="background:#FFFFFF;border-bottom:1px solid #E3EAF3;padding:18px 0;overflow:hidden">
+  <div style="display:flex;gap:40px;width:max-content;animation:marquee 32s linear infinite" style-hover="animation-play-state:paused">
+    <sc-for list="{{ marqueeSkills }}" as="s" hint-placeholder-count="12">
+      <div style="display:flex;align-items:center;gap:40px">
+        <span style="font:500 13px 'Roboto Mono',monospace;color:#40566D;letter-spacing:.08em;white-space:nowrap">{{ s }}</span>
+        <span style="width:7px;height:7px;background:#B4CDFD;transform:rotate(45deg);flex-shrink:0"></span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<section data-screen-label="What I do" style="max-width:1136px;margin:0 auto;padding:96px 24px 0">
+  <div style="animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%">
+    <div style="font:500 12px 'Roboto Mono',monospace;color:#2950DA;letter-spacing:.14em">WHAT I DO</div>
+    <h2 style="margin:12px 0 0;font:600 38px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">End-to-end product engineering</h2>
+    <p style="margin:14px 0 0;max-width:560px;font:400 16px/25px Inter;color:#40566D">From the first wireframe to production monitoring — I work across the stack to take ideas live.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px">
+    <div style="background:#FFFFFF;border:1px solid #E3EAF3;border-radius:8px;padding:28px;transition:all .2s cubic-bezier(.3,0,.2,1);animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%" style-hover="transform:translateY(-4px);box-shadow:0 8px 24px rgba(12,25,39,.08);border-color:#B4CDFD">
+      <div style="width:42px;height:42px;background:rgba(48,94,255,.09);border-radius:8px;display:grid;place-items:center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2950DA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+      <h3 style="margin:18px 0 0;font:600 18px 'TASA Orbiter',sans-serif">Frontend engineering</h3>
+      <p style="margin:10px 0 0;font:400 14px/22px Inter;color:#40566D">Responsive, accessible interfaces with modern frameworks — fast to load, smooth to use, easy to maintain.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">React</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">TypeScript</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">Next.js</span>
+      </div>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E3EAF3;border-radius:8px;padding:28px;transition:all .2s cubic-bezier(.3,0,.2,1);animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%" style-hover="transform:translateY(-4px);box-shadow:0 8px 24px rgba(12,25,39,.08);border-color:#B4CDFD">
+      <div style="width:42px;height:42px;background:rgba(0,162,81,.09);border-radius:8px;display:grid;place-items:center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00A251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
+      <h3 style="margin:18px 0 0;font:600 18px 'TASA Orbiter',sans-serif">Backend &amp; APIs</h3>
+      <p style="margin:10px 0 0;font:400 14px/22px Inter;color:#40566D">Robust services and data models designed for scale — clean APIs, solid tests, and predictable performance.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">Node.js</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">Python</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">PostgreSQL</span>
+      </div>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E3EAF3;border-radius:8px;padding:28px;transition:all .2s cubic-bezier(.3,0,.2,1);animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%" style-hover="transform:translateY(-4px);box-shadow:0 8px 24px rgba(12,25,39,.08);border-color:#B4CDFD">
+      <div style="width:42px;height:42px;background:rgba(233,105,12,.09);border-radius:8px;display:grid;place-items:center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C65C10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg></div>
+      <h3 style="margin:18px 0 0;font:600 18px 'TASA Orbiter',sans-serif">Cloud &amp; DevOps</h3>
+      <p style="margin:10px 0 0;font:400 14px/22px Inter;color:#40566D">Automated pipelines and cloud infrastructure that keep releases boring — deploy often, sleep well.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">AWS</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">Docker</span>
+        <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">CI/CD</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Featured projects" style="max-width:1136px;margin:0 auto;padding:96px 24px 0">
+  <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%">
+    <div>
+      <div style="font:500 12px 'Roboto Mono',monospace;color:#2950DA;letter-spacing:.14em">FEATURED WORK</div>
+      <h2 style="margin:12px 0 0;font:600 38px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">Selected projects</h2>
+    </div>
+    <a href="Work.dc.html" style="display:inline-flex;align-items:center;gap:8px;font:600 14px Inter;color:#2950DA;text-decoration:none;padding-bottom:6px" style-hover="color:#1B3591">View all work
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px">
+    <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+      <a href="Work.dc.html" style="display:block;background:#FFFFFF;border:1px solid #E3EAF3;border-radius:8px;overflow:hidden;text-decoration:none;transition:all .2s cubic-bezier(.3,0,.2,1);animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 25%" style-hover="transform:translateY(-4px);box-shadow:0 8px 24px rgba(12,25,39,.1);border-color:#B4CDFD">
+        <div style="height:190px;border-bottom:1px solid #EEF2F7"><image-slot id="{{ p.slot }}" shape="rect" placeholder="{{ p.imgHint }}"></image-slot></div>
+        <div style="padding:22px 22px 24px">
+          <span style="background:#F0F5FF;color:#2243B6;font:600 11px Inter;padding:3px 10px;border-radius:9999px">{{ p.tag }}</span>
+          <h3 style="margin:12px 0 0;font:600 18px 'TASA Orbiter',sans-serif;color:#192839">{{ p.title }}</h3>
+          <p style="margin:8px 0 0;font:400 14px/21px Inter;color:#40566D">{{ p.desc }}</p>
+          <div style="display:inline-flex;align-items:center;gap:7px;margin-top:16px;font:600 13.5px Inter;color:#2950DA">Read case study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+<sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Testimonials" style="max-width:1136px;margin:0 auto;padding:96px 24px 0">
+  <div style="text-align:center;animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 30%">
+    <div style="font:500 12px 'Roboto Mono',monospace;color:#2950DA;letter-spacing:.14em">TESTIMONIALS</div>
+    <h2 style="margin:12px 0 0;font:600 38px 'TASA Orbiter',sans-serif;letter-spacing:-.01em">What people say</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px">
+    <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+      <div style="background:#FFFFFF;border:1px solid #E3EAF3;border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:18px;animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 25%">
+        <div style="font:700 42px/0.5 'TASA Orbiter',sans-serif;color:#B4CDFD;height:20px">“</div>
+        <p style="margin:0;font:400 14.5px/23px Inter;color:#192839;flex:1">{{ q.text }}</p>
+        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #EEF2F7;padding-top:16px">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(48,94,255,.13);color:#2243B6;display:grid;place-items:center;font:600 13px Inter">{{ q.initials }}</div>
+          <div><div style="font:600 13.5px Inter;color:#192839">{{ q.name }}</div><div style="font:400 12px Inter;color:#6C849D;margin-top:1px">{{ q.role }}</div></div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+<section data-screen-label="CTA" style="max-width:1136px;margin:0 auto;padding:96px 24px 96px">
+  <div style="background:#0D1A48;border-radius:16px;padding:64px 48px;text-align:center;position:relative;overflow:hidden;animation:rise .8s cubic-bezier(0,0,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 35%">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(48,94,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(48,94,255,.08) 1px,transparent 1px);background-size:44px 44px;pointer-events:none"></div>
+    <div style="position:relative">
+      <h2 style="margin:0;font:700 40px 'TASA Orbiter',sans-serif;color:#FFFFFF;letter-spacing:-.01em">Have a project in mind?</h2>
+      <p style="margin:14px auto 0;max-width:480px;font:400 16px/25px Inter;color:rgba(216,228,253,.75)">I'm always happy to talk about interesting problems, new roles, or how I can help your team ship faster.</p>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:30px">
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:10px;background:#305EFF;color:#FFFFFF;font:600 15px Inter;padding:13px 22px;border-radius:4px;text-decoration:none;transition:background .15s cubic-bezier(.3,0,.2,1)" style-hover="background:#2950DA;color:#FFFFFF">Start a conversation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        <a href="mailto:pramodbharathi@gmail.com" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.28);color:#FFFFFF;font:600 15px Inter;padding:13px 22px;border-radius:4px;text-decoration:none;transition:all .15s cubic-bezier(.3,0,.2,1)" style-hover="background:rgba(255,255,255,.08);color:#FFFFFF">pramodbharathi@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer style="background:#0C1927;color:#FFFFFF">
+  <div style="max-width:1136px;margin:0 auto;padding:56px 24px 0">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1.2fr;gap:48px;padding-bottom:48px">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;background:#305EFF;border-radius:8px;display:grid;place-items:center;color:#FFFFFF;font:700 13px 'TASA Orbiter',sans-serif">PB</div>
+          <span style="font:600 15px 'TASA Orbiter',sans-serif">Pramod Bharathi</span>
+        </div>
+        <p style="margin:16px 0 0;max-width:300px;font:400 13.5px/21px Inter;color:rgba(216,228,253,.6)">Software engineer building modern, scalable products for the web.</p>
+      </div>
+      <div>
+        <div style="font:500 11px 'Roboto Mono',monospace;letter-spacing:.14em;color:rgba(216,228,253,.5)">PAGES</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+          <a href="Home.dc.html" style="font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">Home</a>
+          <a href="Work.dc.html" style="font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">Work</a>
+          <a href="About.dc.html" style="font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">About</a>
+          <a href="Contact.dc.html" style="font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font:500 11px 'Roboto Mono',monospace;letter-spacing:.14em;color:rgba(216,228,253,.5)">CONTACT</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+          <a href="mailto:pramodbharathi@gmail.com" style="display:inline-flex;align-items:center;gap:9px;font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            pramodbharathi@gmail.com</a>
+          <a href="tel:+919940322604" style="display:inline-flex;align-items:center;gap:9px;font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            +91 99403 22604</a>
+          <a href="https://linkedin.com/in/pramod-b-388b3720a" target="_blank" style="display:inline-flex;align-items:center;gap:9px;font:400 14px Inter;color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#FFFFFF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            linkedin.com/in/pramod-b</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center">
+      <span style="font:400 13px Inter;color:rgba(216,228,253,.5)">© 2026 Pramod Bharathi</span>
+      <span style="font:400 13px Inter;color:rgba(216,228,253,.5)">Built with care · India</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;openToWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;section&quot;:&quot;Hero&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;section&quot;:&quot;Hero&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { years: 0, projects: 0, certs: 0 };
+  componentDidMount() {
+    const targets = { years: 6, projects: 20, certs: 8 };
+    const t0 = performance.now(), dur = 1400;
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      this.setState({
+        years: Math.round(targets.years * e),
+        projects: Math.round(targets.projects * e),
+        certs: Math.round(targets.certs * e)
+      });
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  renderVals() {
+    const skills = ['REACT', 'TYPESCRIPT', 'NODE.JS', 'PYTHON', 'AWS', 'DOCKER', 'KUBERNETES', 'POSTGRESQL', 'GRAPHQL', 'CI / CD', 'TERRAFORM', 'REDIS'];
+    return {
+      years: this.state.years, projects: this.state.projects, certs: this.state.certs,
+      openToWork: this.props.openToWork ?? true,
+      showStats: this.props.showStats ?? true,
+      showTestimonials: this.props.showTestimonials ?? true,
+      marqueeSkills: skills.concat(skills),
+      featured: [
+        { slot: 'proj-1', tag: 'Case study', title: 'Payments reconciliation platform', desc: 'Automated matching of high-volume transactions, cutting manual effort by hours every day.', imgHint: 'Drop a project screenshot' },
+        { slot: 'proj-2', tag: 'Case study', title: 'Realtime logistics dashboard', desc: 'Live fleet tracking and alerting for operations teams across multiple regions.', imgHint: 'Drop a project screenshot' },
+        { slot: 'proj-3', tag: 'Case study', title: 'Customer onboarding portal', desc: 'Self-serve KYC and account setup flow that lifted activation rates significantly.', imgHint: 'Drop a project screenshot' }
+      ],
+      quotes: [
+        { text: 'Pramod consistently delivers beyond expectations — he owns problems end to end and communicates clearly at every step. [Replace with a real quote.]', initials: 'AK', name: '[Colleague name]', role: '[Title, Company]' },
+        { text: 'One of the most dependable engineers I have worked with. Complex systems, tight deadlines — he handles both calmly. [Replace with a real quote.]', initials: 'RS', name: '[Manager name]', role: '[Title, Company]' },
+        { text: 'Great technical depth, and just as importantly, great to work with. Our team shipped faster with him on board. [Replace with a real quote.]', initials: 'VP', name: '[Client name]', role: '[Title, Company]' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
