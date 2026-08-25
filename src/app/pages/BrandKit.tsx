@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Check, Copy, Palette, Type, Layout, Sparkles } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { BrandMark } from '../components/BrandMark';
 
 type Swatch = {
   name: string;
@@ -170,12 +171,7 @@ export default function BrandKit() {
                   className={`${v.bg} ${v.border ? 'border border-gray-200' : ''} rounded-2xl p-12 flex flex-col items-center justify-center gap-6`}
                 >
                   <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/25">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M6 4H13C15.7614 4 18 6.23858 18 9C18 11.7614 15.7614 14 13 14H6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M6 4V17L4.5 20" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M6 17L7.5 20" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M6 21.5V22" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
+                    <BrandMark size={40} fill="white" />
                   </div>
                   <p className={`text-sm uppercase tracking-[0.25em] ${v.text}`}>{v.label}</p>
                 </div>

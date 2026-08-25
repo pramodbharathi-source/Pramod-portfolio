@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { AnimatedThemeToggler } from './magicui/animated-theme-toggler';
+import { BrandMark } from './BrandMark';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,12 +25,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30 transition-transform group-hover:scale-105 relative overflow-hidden">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10">
-                <path d="M6 4H13C15.7614 4 18 6.23858 18 9C18 11.7614 15.7614 14 13 14H6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 4V17L4.5 20" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 17L7.5 20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M6 21.5V22" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
+              <BrandMark size={22} fill="white" className="relative z-10" />
               <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="flex flex-col leading-none">

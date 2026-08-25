@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrandMark } from './BrandMark';
 
 interface PageLoaderProps {
   onLoadingComplete: () => void;
@@ -115,20 +116,12 @@ export function PageLoader({ onLoadingComplete }: PageLoaderProps) {
               animation: 'logoAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             }}
           >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <BrandMark
+              size={32}
+              fill="white"
               className="relative z-10"
               style={{ animation: 'drawIn 0.7s ease-out 0.2s both' }}
-            >
-              <path d="M6 4H13C15.7614 4 18 6.23858 18 9C18 11.7614 15.7614 14 13 14H6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M6 4V17L4.5 20" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M6 17L7.5 20" stroke="white" strokeWidth="2" strokeLinecap="round" />
-              <path d="M6 21.5V22" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
+            />
             {/* Rotating shine */}
             <div
               className="absolute inset-0"
