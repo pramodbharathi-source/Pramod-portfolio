@@ -3,7 +3,6 @@ import { RouterProvider } from 'react-router';
 import { router } from './routes';
 import { ThemeProvider } from './context/ThemeContext';
 import { PageLoader } from './components/PageLoader';
-import { SmoothCursor } from './components/magicui/smooth-cursor';
 
 // No background square (icon only, per design choice). Adapts to the browser/OS
 // chrome's own color scheme — not the site's theme toggle — since a favicon has
@@ -38,11 +37,6 @@ function useFavicon() {
 export default function App() {
   useFavicon();
   const [showLoader, setShowLoader] = useState(true);
-  const [smoothCursor, setSmoothCursor] = useState(true);
-
-  useEffect(() => {
-    setSmoothCursor(localStorage.getItem('smooth-cursor-enabled') !== 'false');
-  }, []);
 
   const handleLoadingComplete = useCallback(() => {
     setShowLoader(false);
@@ -65,11 +59,6 @@ export default function App() {
       {showLoader && (
         <PageLoader onLoadingComplete={handleLoadingComplete} />
       )}
-
-      {/* Mounted only after the loader exits: SmoothCursor sets `body { cursor: none }`,
-          and the loader (z-9999) sits above the cursor (z-100), so mounting it earlier
-          would leave no visible pointer at all while loading. Self-disables on touch. */}
-      {!showLoader && smoothCursor && <SmoothCursor />}
     </ThemeProvider>
   );
 }
