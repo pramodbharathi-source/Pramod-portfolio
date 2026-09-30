@@ -3,11 +3,23 @@ import { ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import designSystemCover from 'figma:asset/a4f0044400029c030fa38048de440178aded1eba.png';
 import atherCover from 'figma:asset/69e4632b959f6f4ac2b3396da949790e8e4371b9.png';
+import nasdaqCover from '../../imports/nasdaq/nasdaq-cover.jpg';
 import { DexCoverImage } from '../components/DexCoverImage';
 import { Navbar } from '../components/Navbar';
 
 export default function Works() {
   const projects = [
+    {
+      id: 5,
+      title: "Nasdaq Calypso — Modernizing Post-Trade Operations",
+      category: "Enterprise · Fintech Platform",
+      description: "Redesigning a complex suite of Back Office post-trade workflows into a consistent browser-based experience for banks and financial institutions, moving a legacy desktop estate to the cloud.",
+      image: nasdaqCover,
+      link: "/case-study/nasdaq",
+      tags: ["Design Leadership", "Complex Workflows", "Cloud Modernization", "Fintech"],
+      isLatest: true,
+      isNDA: true,
+    },
     {
       id: 4,
       title: "Ather Widget Reducing Friction for EV Riders",
@@ -16,7 +28,6 @@ export default function Works() {
       image: atherCover,
       link: "/case-study/ather-widget",
       tags: ["Mobile Widget", "Constraint-driven", "EV", "Concept"],
-      isLatest: true,
     },
     {
       id: 1,
@@ -79,14 +90,19 @@ export default function Works() {
                   <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm text-gray-900">
                     {project.category}
                   </div>
-                  {'isLatest' in project && project.isLatest && (
-                    <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 flex items-center gap-2">
+                    {'isNDA' in project && project.isNDA && (
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-gray-900/85 text-white backdrop-blur-sm border border-white/20">
+                        NDA
+                      </span>
+                    )}
+                    {'isLatest' in project && project.isLatest && (
                       <span className="latest-badge-wrapper">
                         <span className="latest-badge-border"></span>
                         <span className="latest-badge-text">Latest</span>
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 transition">

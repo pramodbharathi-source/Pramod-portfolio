@@ -11,6 +11,7 @@ import altimetrikDarkLogo from '../../imports/image-2.png';
 import visaLightLogo from '../../imports/image-3.png';
 import image_11c290a19a18e16ae74bab159390d1f60ca620f8 from 'figma:asset/11c290a19a18e16ae74bab159390d1f60ca620f8.png';
 import atherCoverImage from 'figma:asset/69e4632b959f6f4ac2b3396da949790e8e4371b9.png';
+import nasdaqCover from '../../imports/nasdaq/nasdaq-cover.jpg';
 import shashankImage from 'figma:asset/589989abd5cd229c64b11d27037acfbd9ba8e9a3.png';
 import narasimhanImage from 'figma:asset/9e0a26e725558fe50b2e3913d2ebf7f28ab59bfd.png';
 import meenakshiImage from 'figma:asset/4ce541cd4616ca2c1ce453981f8fccc6bfe33657.png';
@@ -40,6 +41,17 @@ export default function Home() {
 
   const projects = [
     {
+      id: 5,
+      title: "Nasdaq Calypso — Modernizing Post-Trade Operations",
+      category: "Enterprise · Fintech Platform",
+      description: "Redesigning a complex suite of Back Office post-trade workflows into a consistent browser-based experience for banks and financial institutions, moving a legacy desktop estate to the cloud.",
+      image: nasdaqCover,
+      link: "/case-study/nasdaq",
+      tags: ["Design Leadership", "Complex Workflows", "Cloud Modernization", "Fintech"],
+      isLatest: true,
+      isNDA: true,
+    },
+    {
       id: 4,
       title: "Ather Widget Reducing Friction for EV Riders",
       category: "Concept · Mobile Widget",
@@ -47,7 +59,6 @@ export default function Home() {
       image: atherCoverImage,
       link: "/case-study/ather-widget",
       tags: ["Mobile Widget", "Constraint-driven", "EV", "Concept"],
-      isLatest: true,
     },
     {
       id: 1,
@@ -476,14 +487,19 @@ export default function Home() {
                   <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm text-gray-900">
                     {project.category}
                   </div>
-                  {'isLatest' in project && project.isLatest && (
-                    <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 flex items-center gap-2">
+                    {'isNDA' in project && project.isNDA && (
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-gray-900/85 text-white backdrop-blur-sm border border-white/20">
+                        NDA
+                      </span>
+                    )}
+                    {'isLatest' in project && project.isLatest && (
                       <span className="latest-badge-wrapper">
                         <span className="latest-badge-border"></span>
                         <span className="latest-badge-text">Latest</span>
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 transition">
