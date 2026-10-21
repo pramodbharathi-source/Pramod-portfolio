@@ -1,36 +1,24 @@
 import { Link } from 'react-router';
 import { ArrowLeft, Download, Printer } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { RESUME_PDF_BASE64 } from './resumeData';
+import resumePdf from '../../imports/Pramod_B_Resume.pdf';
 
-function base64ToBlobUrl(b64: string): string {
-  const bin = atob(b64);
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-}
+// Served as a real static asset rather than a base64 blob: URL. Chrome's PDF
+// viewer refuses to render a `blob:` source inside an iframe (the old approach
+// produced a valid PDF that painted as an empty grey box), and inlining the
+// file as base64 also pushed ~137 kB of string data into the JS bundle.
+const DOWNLOAD_NAME = 'Pramod_B_Resume.pdf';
 
 export default function Resume() {
-  const [resumePdf, setResumePdf] = useState<string>('');
-
-  useEffect(() => {
-    const url = base64ToBlobUrl(RESUME_PDF_BASE64);
-    setResumePdf(url);
-    return () => URL.revokeObjectURL(url);
-  }, []);
-
   const handleDownload = () => {
-    if (!resumePdf) return;
     const link = document.createElement('a');
     link.href = resumePdf;
-    link.download = 'Pramod_B_Resume_2026.pdf';
+    link.download = DOWNLOAD_NAME;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   const handlePrint = () => {
-    if (!resumePdf) return;
     const w = window.open(resumePdf, '_blank');
     if (w) {
       w.addEventListener('load', () => w.print());
@@ -70,18 +58,42 @@ export default function Resume() {
 
       <div className="max-w-4xl mx-auto px-6 py-8 print:p-0 print:max-w-full">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden print:shadow-none print:rounded-none">
-          {resumePdf ? (
-            <iframe
-              src={`${resumePdf}#view=FitH`}
-              title="Pramod B Resume"
-              className="w-full"
-              style={{ height: '90vh', border: 0 }}
-            />
-          ) : (
-            <div className="w-full flex items-center justify-center text-gray-500" style={{ height: '90vh' }}>
-              Loading resume…
+          {/* <object> degrades to its own children when the browser can't display
+              a PDF inline — which is the case on most mobile browsers — so the
+              fallback below is shown instead of a blank frame. */}
+          <object
+            data={`${resumePdf}#view=FitH`}
+            type="application/pdf"
+            title="Pramod B Resume"
+            className="w-full block"
+            style={{ height: '90vh' }}
+          >
+            <div
+              className="w-full flex flex-col items-center justify-center gap-4 px-6 text-center"
+              style={{ height: '90vh' }}
+            >
+              <p className="text-gray-600">
+                Your browser can't display the PDF inline.
+              </p>
+              <div className="flex items-center gap-3">
+                <a
+                  href={resumePdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition"
+                >
+                  Open in new tab
+                </a>
+                <a
+                  href={resumePdf}
+                  download={DOWNLOAD_NAME}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                >
+                  Download Resume
+                </a>
+              </div>
             </div>
-          )}
+          </object>
           <div className="p-4 text-center text-sm text-gray-500 border-t border-gray-200">
             Can't see the preview?{' '}
             <a href={resumePdf} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
